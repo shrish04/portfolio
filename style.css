@@ -1,0 +1,730 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border:none;
+    outline: none;
+    font-family: "Poppins", sans-serif;
+}
+
+:root{
+    --bg-color:#1f242d;
+    --second-bg-color:#323946;
+    --main-color:#7cf03d;
+    --white-color:#fff;
+    --disabled-color:#fff3;
+
+}
+
+html{
+    font-size:62.5%;
+    
+}
+
+body{
+    color: var(--white-color);
+
+}
+
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 9%;
+    background: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    justify-content: space-between;
+    visibility: hidden;
+    opacity: 0;
+
+
+}
+header.active{
+    animation: show-header 1.5s linear forwards;
+    animation-delay: 1.1s;
+}
+
+@keyframes show-header{
+    100%{
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+.logo{
+    font-size: 3rem;
+    color: var(--white-color);
+    font-weight: 700;
+}
+
+nav a{
+    font-size: 2rem;
+    color: var(--white-color);
+    font-weight: 500;
+    margin-left: 3.5rem;
+    transition: .5s;
+    
+}
+
+nav a:hover,
+nav a.active {
+    color: var(--main-color);
+}
+
+#menu-icon{
+    font-size: 4rem;
+    display:none;
+    
+}
+
+.bars-box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display:flex;
+}
+
+.bars-box .bar{
+    width: 100%;
+    height: 100%;
+    background: var(--bg-color);
+}
+@keyframes hide-bars {
+    0%{
+        transform: translateY(0);
+    }
+    100%{
+        transform: translateY(-100%);
+    }  
+}
+
+.bars-box.active .bar{
+    animation: show-bars .5s ease-in-out both;
+    animation-delay: calc(.1s * var(--i)) ;
+}
+
+@keyframes show-bars {
+    0%{
+        transform: translateY(-100%);
+    }
+    100%{
+        transform: translateY(0);
+    }  
+}
+
+section{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 9rem 6% 2rem;
+   
+    visibility: hidden;
+    opacity: 0;
+    overflow: hidden;
+
+}
+
+section.active{
+    animation: show-content 1.3s linear forwards;
+    animation-delay: 1s;
+}
+ @keyframes show-content{
+    100%{
+        visibility: visible;
+        opacity: 1;
+        overflow: auto;
+    }
+}   
+
+
+.home{
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+}
+
+.home-detail h1{
+         font-size: clamp(3.5rem, 10vw, 5.5rem);
+}
+
+.home-detail h2{
+    display: inline-block;
+    font-size: 3.2rem;
+    margin-top: -1rem;
+}
+
+.home-detail h2 span{
+    position: relative;
+    display: inline-block;
+    color: transparent;
+    -webkit-text-stroke: .07rem var(--main-color);
+    animation: display-text 16s linear infinite;
+    animation-delay: calc(-4s * var(--i));
+}
+
+@keyframes display-text{
+    25%,100%{
+        display: none;
+    }
+}
+
+
+.home-detail h2 span::before{
+    content: attr(data-text);
+    position: absolute;
+    width: 0;
+    border-right: .2rem solid var(--main-color);
+    color: var(--main-color);
+    white-space: nowrap; 
+    overflow: hidden;
+    animation: fill-text 4s linear infinite;
+}
+
+
+
+@keyframes fill-text{
+    10%,
+    100%{
+        width: 0;
+
+    }
+    70%,
+    90%{
+        width: 100%;
+    }
+}
+
+ .home-detail p{
+    font-size: 1.6rem;
+    margin: 1rem 0 2.5rem;
+
+}
+
+.home-detail .btn-sci{
+    display: flex;
+    align-items: center;
+
+}
+
+.btn{
+    display: inline-block;
+    padding: 1rem 3rem;
+    background: var(--main-color);
+    border: .2rem solid var(--main-color);
+    border-radius: 4rem;
+    box-shadow: 0 0 1rem var(--main-color);
+    font-size: 1.6rem;
+    color: var(--bg-color);
+    font-size: 500;
+    transition: .5s;
+
+}
+
+.btn:hover{
+    background: transparent;
+    color: var(--main-color);
+    box-shadow: none;
+}
+
+.home-detail .btn-sci .sci {
+    margin-left: 2rem;
+
+}
+
+.home-detail .btn-sci .sci a {
+    display: inline-flex;
+    padding: .8rem;
+    border: .2rem solid var(--main-color);
+    border-radius: 50%;
+    font-size: 2rem;
+    color: var(--main-color);
+    margin: 0 .8rem;
+    transition: .5s;
+}
+
+.home-detail .btn-sci .sci a:hover{
+    background: var(--main-color);
+    color: var(--bg-color);
+    box-shadow: 0 0 1rem var(--main-color);
+}
+
+.home-img .img-box{
+    position: relative;
+    width: 32vw;
+    height: 32vw;
+    border-radius: 50%;
+    padding: .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+}
+
+.home-img .img-box::before,
+.home-img .img-box::after{
+    content: '';
+     
+    position: absolute;
+    width: 50rem;
+    height: 50rem;
+    background: conic-gradient(transparent,transparent,transparent, var(--main-color));
+    transform: rotate(0deg);
+    animation: rotate-border 10s linear infinite;
+}
+
+.home-img .img-box::after{
+    animation-delay: -5s;
+}
+
+@keyframes rotate-border{
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+.home-img .img-box .img-item{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-color);
+    border-radius: 50%;
+    border: .01rem solid var(--bg-color);
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.home-img .img-box .img-item img {
+    position: absolute;
+    top: 3rem;
+    display: block;
+    width: 85%;
+    object-fit: cover;
+    mix-blend-mode: lighten;
+
+}
+
+.heading{
+    font-size: 4.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+
+}
+
+.heading span{
+    color: var(--main-color);
+}
+
+.services-container{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap:2rem;
+
+}
+
+.services-container .services-box{
+    padding: 3rem 2rem;
+    background: var(--second-bg-color);
+    border: .2rem solid var(--second-bg-color);
+    border-radius: 1rem;
+}
+
+.services-container .services-box:hover{
+    border-color: var(--main-color);
+    transform: scale(1.02);
+    transition-duration: 0.7s;
+}
+
+.services-box .icon{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.services-box .icon i{
+    font-size: 4rem;
+     transform: .6s;
+}
+
+.services-box:hover .icon :not(a i){
+      color: var(--main-color);
+}
+
+.services-box .icon a{
+    display: inline-flex;
+    background: var(--white-color);
+    border-radius: 50%;
+    padding: 1rem;
+    transition: .5s;
+    
+}
+
+.services-box:hover .icon a{
+    background: var(--main-color);
+}
+
+.services-box .icon a i{
+    font-size: 3rem;
+    color:var(--bg-color);
+    transform: rotate(225deg);
+}
+
+.services-box .icon a:hover i{
+    transform: rotate(180deg);
+    transition-duration: .4s;
+}
+ 
+.services-box h3{
+    font-size: 3.75rem;
+    margin: .5rem;
+    transition: .5s;
+}
+.services-box:hover h3{
+     color: var(--main-color);
+}
+
+.services-box p{
+    font-size: 1.6rem;
+
+}
+
+.resume-container{
+    display: grid;
+    grid-template-columns: .8fr 2fr;
+    gap: 6rem;
+}
+.resume-box h2{
+    font-size: 4.5rem;
+    
+}
+.resume-box h2 .main-color {
+    color: var(--main-color);
+}
+
+
+.resume-box p{
+    font-size: 1.4rem;
+}
+
+.resume-box .desc{
+    margin: 2rem 0 4rem;
+    font-size: 1.6rem;
+}
+
+.resume-box .resume-btn{
+         width: 100%;
+         height: 5.3rem;
+         background: var(--second-bg-color);
+         border: .2rem solid var(--second-bg-color);
+         font-size: 1.6rem;
+         color: var(--white-color);
+         font-weight: 500;
+         margin-bottom: 2rem;
+         border-radius: .8rem;
+         cursor: pointer;
+
+}
+
+.resume-box .resume-btn.active{
+    border-color:var(--main-color);
+    color: var(--main-color);
+}
+
+.resume-box .heading{
+    font-size: 3.5rem;
+    text-align: left;
+}
+
+.resume-detail{
+    display: none;
+}
+
+.resume-detail.active{
+    display: block;
+}
+.certificate-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.5rem;
+  padding: 0.15rem 0.6rem;
+  background: var(--main-color);
+  color: var(--bg-color);
+  font-weight: 500;
+  font-size: 1.1rem;
+  border-radius: 0.8rem;
+  text-decoration: none;
+  box-shadow: 0 0 0.3rem var(--main-color);
+  transition: all 0.25s ease;
+}
+.certificate-link i { font-size: 0.95rem; }
+.certificate-link:hover {
+  background: transparent;
+  color: var(--main-color);
+  box-shadow: none;
+  border: 0.12rem solid var(--main-color);
+}
+
+
+
+.resume-list{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  gap: 2.5rem;
+  max-height: 55rem;       /* more flexible than height */
+  overflow-y: auto;
+  padding-right: 1rem;     /* space for scrollbar */
+}
+
+.resume-list{
+  scrollbar-width: thin;
+  scrollbar-color: var(--main-color) transparent;
+}a
+
+/* Optional: show colored thumb always (not only on hover) */
+.resume-list::-webkit-scrollbar-thumb{
+  background: var(--main-color);
+
+}
+
+
+  
+.resume-list::-webkit-scrollbar{
+    width: .8rem;
+}
+
+.resume-list::-webkit-scrollbar-track{
+    background: transparent;
+    border-radius: 1rem;
+}
+
+.resume-list::-webkit-scrollbar-thumb{
+  background: rgba(115, 53, 53, 0.06); /* subtle default */
+  border-radius: 1rem;
+  transition: background .18s;
+}
+.resume-list:hover::-webkit-scrollbar-thumb{
+  background: var(--main-color);      /* color on hover */
+}
+
+
+.resume-item .year{
+    color: var(--main-color);
+}
+
+.resume-item h3{
+    font-size: 2.22rem;
+
+}
+
+.resume-list .resume-item{
+  background: var(--second-bg-color);
+  border-radius: .8rem;
+  padding: 3rem 2.5rem;
+  /* remove fixed height for items so grid auto-sizes nicely */
+  
+  justify-content: center;
+}
+
+
+.resume-item {
+  position: relative; /* ensure pseudo-elements inside can position correctly */
+}
+
+.resume-item .corsera {
+  position: relative;
+  margin-left: 2rem;
+  margin-bottom: 2rem;
+}
+
+.resume-item .corsera::before {
+  content: '';
+  position: absolute;
+  left: -1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0.8rem;
+  height: 0.8rem;
+  background: var(--main-color);
+  border-radius: 50%;
+  z-index: 2;
+}
+/* Make button and year appear on same line */
+.resume-item .certificate-link,
+.resume-item .year {
+    display: inline-flex;       /* keeps them in one line */
+    align-items: center;        /* vertically center */
+    white-space: nowrap;        /* prevent wrapping */
+}
+
+/* Add spacing between button and date */
+.resume-item .certificate-link {
+    margin-right: 1rem;         /* space between button and year */
+    padding: 0.4rem 0.8rem;     /* reduce button size */
+}
+
+
+.certificate-link {
+    padding: 0.35rem 0.8rem;     /* smaller button size */
+    font-size: 1.1rem;
+}
+.resume-item p {
+    margin-top: 1.5rem; /* adds space below the certificate button & year */
+    line-height: 1.6;   /* optional, improves readability */
+}
+
+.resume-item .certificate-link + span + p {
+    margin-top: 1.5rem;
+}
+
+.skills-container {
+    display: grid;
+    grid-template-columns: 1fr; /* only 1 per row */
+    gap: 2.5rem; /* spacing between blocks */
+    margin-top: 2rem;
+}
+
+.skill {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    background: var(--second-bg-color);
+    padding: 2rem; /* bigger padding = taller */
+    border-radius: 1rem;
+    position: relative;
+    width: 100%; /* full width */
+    min-height: 100px; /* makes block taller */
+}
+
+.skill i {
+    font-size: 7rem; /* bigger icon */
+    color: var(--main-color);
+    flex-shrink: 0;
+}
+
+.skill span {
+    font-size: 1.8rem;
+    font-weight: 600;
+    min-width: 100px;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 0.7rem; /* thicker bar */
+    background: var(--bg-color);
+    border-radius: 1rem;
+    overflow: hidden;
+    margin: 0 1rem;
+}
+
+.progress {
+    height: 100%;
+    background: var(--main-color);
+    border-radius: 1rem;
+    transition: width 1s ease-in-out;
+}
+
+.skill .percent {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--white-color);
+}
+
+.resume-container .resume-box:first-child {
+    position: sticky;
+    top: 2rem; /* adjust according to your header */
+    align-self: start;
+}
+
+.skills-container {
+    overflow-y: auto;         /* enable vertical scroll */
+    max-height: 55rem;        /* same as certifications scroll */
+    padding-right: 1rem;      /* space for scrollbar */
+}
+
+/* Optional scrollbar styling (same as Certifications) */
+.skills-container::-webkit-scrollbar {
+    width: 0.5rem;
+    
+}
+
+.skills-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.skills-container::-webkit-scrollbar-thumb {
+    background: var(--main-color);
+    border-radius: 1rem;
+}
+
+.skills-container:hover::-webkit-scrollbar-thumb {
+    background: var(--main-color);
+}
+
+
+
+
+/* Force each paper in new line */
+.resume-detail.researchPaper .resume-list {
+  display: block !important;   /* remove grid/flex */
+}
+
+.resume-detail.researchPaper .resume-item {
+  display: block;
+  margin-bottom: 2rem;  
+  
+}
+/* Target the research paper section to add vertical spacing between items */
+.resume-detail.researchPaper .resume-item {
+    /* Sets the bottom margin for all research paper blocks */
+    margin-bottom: 4rem; 
+}
+
+/* Removes the margin from the very last item to avoid extra space at the bottom */
+.resume-detail.researchPaper .resume-item:last-child {
+    margin-bottom: 0;
+}
+
+.researchPaper .resume-item {
+  margin-bottom: 2.5rem;        /* space between boxes */
+  padding: 2rem;                /* increase inner spacing */
+  min-height: 320px;            /* increase the height */
+  border-bottom: 1px solid var(--second-bg-color); /* optional line */
+  border-radius: 15px;          /* optional rounded corners */
+  background: var(--second-bg-color);  /* optional subtle background */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* optional shadow for effect */
+}
+
+.researchPaper .disc {
+  margin-bottom: 2.5rem;  /* space between the paragraph and resume items */
+}
+.resume-detail.about .resume-list{
+    height: auto;
+    grid-template-columns: repeat(auto-fit, minmax(25rem,1fr));
+
+}
+.resume-detail.about .resume-item {
+   height: auto;
+   padding: 0 0.5rem;
+   background: transparent;
+}
+
+.resume-detail.about .resume-item p {
+    color: var(--main-color);
+}
+
+.resume-detail.about .resume-item p span {
+    color: var(--white-color);
+    margin-left: 1rem;
+    font-size: 1.8rem;
+}
